@@ -1,14 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
-import { Navbar } from './App';
+import { NavbarPub } from './App';
+import HomePublic from './pages/publicSite/HomePublic';
 
 
 const router = createBrowserRouter([
+  {
+    element: <NavbarPub />,
+    children: [
       {
         path: "/",
-        element: <Navbar />
+        element: <HomePublic />
       },
+    ],
+  },
+
 ]);
 
 

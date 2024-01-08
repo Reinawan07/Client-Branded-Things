@@ -1,15 +1,15 @@
 import { Outlet } from "react-router-dom"
-import NavbarPub from "./components/Navbar"
+import NavbarPublic from "./components/NavbarPublic"
 
 
-function Navbar(){
+function NavbarPub(){
   return (
     <>
-      <NavbarPub/>
+      <NavbarPublic/>
       <Outlet/>
 
     </>
   )
 }
 
-export {Navbar}
+export {NavbarPub}
