@@ -80,103 +80,73 @@ export default function HomePublic() {
                 </div>
             </aside>
 
-            <div class="p-4 sm:ml-64">
-                <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
-                    <div class="grid grid-cols-3 gap-4 mb-4">
-                        <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                            <p class="text-2xl text-gray-400 dark:text-gray-500">
-                                <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                                </svg>
-                            </p>
+            <div className="p-4 sm:ml-64">
+                <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+                    <div className="grid grid-cols-3 gap-4 mb-4">
+
+                        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                            <div style={{ height: "300px" }}>
+                                <img className="object-cover w-full h-full rounded-t-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLF8Bwc6vlme8LCvoO2m0mjUL9dpJ2Gdjn6Q&usqp=CAU" alt="" />
+                            </div>
+
+                            <div className="p-5">
+                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Casual Denim Shirt</h5>
+
+                                <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    Read more
+                                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
-                        <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                            <p class="text-2xl text-gray-400 dark:text-gray-500">
-                                <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                                </svg>
-                            </p>
+                        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                            <div style={{ height: "300px" }}>
+                                <img className="object-cover w-full h-full rounded-t-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLF8Bwc6vlme8LCvoO2m0mjUL9dpJ2Gdjn6Q&usqp=CAU" alt="" />
+                            </div>
+
+                            <div className="p-5">
+                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Casual Denim Shirt</h5>
+
+                                <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    Read more
+                                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
-                        <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                            <p class="text-2xl text-gray-400 dark:text-gray-500">
-                                <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                                </svg>
-                            </p>
+                        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                            <div style={{ height: "300px" }}>
+                                <img className="object-cover w-full h-full rounded-t-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLF8Bwc6vlme8LCvoO2m0mjUL9dpJ2Gdjn6Q&usqp=CAU" alt="" />
+                            </div>
+
+                            <div className="p-5">
+                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Casual Denim Shirt</h5>
+
+                                <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    Read more
+                                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-400 dark:text-gray-500">
-                            <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                            </svg>
-                        </p>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4 mb-4">
-                        <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                            <p class="text-2xl text-gray-400 dark:text-gray-500">
-                                <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                                </svg>
-                            </p>
-                        </div>
-                        <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                            <p class="text-2xl text-gray-400 dark:text-gray-500">
-                                <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                                </svg>
-                            </p>
-                        </div>
-                        <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                            <p class="text-2xl text-gray-400 dark:text-gray-500">
-                                <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                                </svg>
-                            </p>
-                        </div>
-                        <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                            <p class="text-2xl text-gray-400 dark:text-gray-500">
-                                <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                                </svg>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-                        <p class="text-2xl text-gray-400 dark:text-gray-500">
-                            <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                            </svg>
-                        </p>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                            <p class="text-2xl text-gray-400 dark:text-gray-500">
-                                <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                                </svg>
-                            </p>
-                        </div>
-                        <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                            <p class="text-2xl text-gray-400 dark:text-gray-500">
-                                <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                                </svg>
-                            </p>
-                        </div>
-                        <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                            <p class="text-2xl text-gray-400 dark:text-gray-500">
-                                <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                                </svg>
-                            </p>
-                        </div>
-                        <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                            <p class="text-2xl text-gray-400 dark:text-gray-500">
-                                <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                                </svg>
-                            </p>
+                        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                            <div style={{ height: "300px" }}>
+                                <img className="object-cover w-full h-full rounded-t-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLF8Bwc6vlme8LCvoO2m0mjUL9dpJ2Gdjn6Q&usqp=CAU" alt="" />
+                            </div>
+
+                            <div className="p-5">
+                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Casual Denim Shirt</h5>
+
+                                <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    Read more
+                                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
