@@ -5,6 +5,7 @@ import { NavbarPub } from './App';
 import HomePublic from './pages/publicSite/HomePublic';
 import HomeDetailPublic from './pages/publicSite/HomeDetailPublic';
 import LoginPage from './pages/cmsSite/LoginPage';
+import ListEntitasUtama from './pages/publicSite/ListEntitasUtama';
 
 
 const router = createBrowserRouter([
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "/detail/:id",
         element: <HomeDetailPublic />
+      },
+      {
+        path: "/listproducts",
+        element: <ListEntitasUtama />
       },
     ],
   },
