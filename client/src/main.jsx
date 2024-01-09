@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import { NavbarPub } from './App';
 import HomePublic from './pages/publicSite/HomePublic';
+import HomeDetailPublic from './pages/publicSite/HomeDetailPublic';
 
 
 const router = createBrowserRouter([
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePublic />
+      },
+      {
+        path: "/detail/:id",
+        element: <HomeDetailPublic />
       },
     ],
   },
