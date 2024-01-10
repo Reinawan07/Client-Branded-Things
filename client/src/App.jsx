@@ -1,8 +1,9 @@
 import { Outlet } from "react-router-dom"
 import NavbarPublic from "./components/NavbarPublic"
+import NavbarCms from "./components/NavbarCms"
 
 
-function NavbarPub(){
+function NavbarPubSite(){
   return (
     <>
       <NavbarPublic/>
@@ -12,4 +13,13 @@ function NavbarPub(){
   )
 }
 
-export {NavbarPub}
+function NavbarCmsSite() {
+  return (
+    <>
+      <NavbarCms/>
+      <Outlet />
+    </>
+  )
+}
+
+export {NavbarPubSite, NavbarCmsSite}

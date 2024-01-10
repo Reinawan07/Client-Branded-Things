@@ -6,7 +6,6 @@ export default function CardHomePublic({ product }) {
 
     return (
         <>
-
             <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <div style={{ height: "300px", width: "100%" }}>
                     <img className="object-cover w-full h-full rounded-t-lg" src={product.imgUrl} alt="" />

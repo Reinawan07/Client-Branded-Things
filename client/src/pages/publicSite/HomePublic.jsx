@@ -57,7 +57,6 @@ export default function HomePublic() {
         setSortBy(date);
     };
 
-
     return (
         <>
             {/* SIDEBAR */}

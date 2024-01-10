@@ -25,9 +25,9 @@ export default function LoginPage() {
         try {
           const {data} = await axios({
             method: "post",
-            // url: "https://brandedthings.reinawan.fun/pub/products/login",
-            url: "http://localhost:3000/login",
-            // url: "http://3.0.97.244/",
+            url: "https://brandedthings.reinawan.fun/login",
+            // url: "http://localhost:3000/login",
+            // url: "http://3.0.97.244/login",
             data: input,
         }); 
 
