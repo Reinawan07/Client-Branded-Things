@@ -7,34 +7,46 @@ export default function HomePublic() {
     const [search, setSearch] = useState("");
     const [pagination, setPagination] = useState(1);
     const [size, setSize] = useState(10);
+    const [category, setCategory] = useState(null);
 
 
     const fetchData = async () => {
         try {
-            const option = {
-                params: {
-                    page: pagination, 
-                    size: size, 
-                    search: search
-                },
-            };
-
             let url = `https://brandedthings.reinawan.fun/pub/products`;
 
+            const option = {
+                params: {
+                    page: pagination,
+                    size: size,
+                    search: search,
+                },
+            };
+            if (category) {
+                url += `?filter[categoryId]=${category}`;
+            }
+
+            
             const { data } = await axios.get(url, option);
             setDataProducts(data);
         } catch (error) {
-            console.log(error);
+            console.error('Error', error);
         }
     };
 
     useEffect(() => {
+        console.log('Category:', category);
         fetchData();
-    }, [search, pagination, size]);
+    }, [search, pagination, size, category]);
 
     const handlePageChange = (newPage) => {
         setPagination(newPage);
     };
+
+    const searchByCategory = (categoryId) => {
+        setCategory(categoryId);
+       
+    };
+
     return (
         <>
             {/* SIDEBAR */}
@@ -42,7 +54,7 @@ export default function HomePublic() {
                 <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
                     <ul className="space-y-2 font-medium">
 
-
+                        {/* SEARCH */}
                         <form className="flex items-center">
                             <label htmlFor="simple-search" className="sr-only">Search</label>
                             <div className="relative w-full">
@@ -63,7 +75,7 @@ export default function HomePublic() {
                             </div>
                         </form>
 
-
+                        {/* CATEGORY */}
                         <li>
                             <button
                                 type="button"
@@ -71,25 +83,61 @@ export default function HomePublic() {
                                 aria-controls="dropdown-example-category"
                                 data-collapse-toggle="dropdown-example-category"
                             >
-                                <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5h6M9 8h6m-6 3h6M4.996 5h.01m-.01 3h.01m-.01 3h.01M2 1h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Z" />
+                                <svg
+                                    className="w-6 h-6 text-gray-800 dark:text-white"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 20 16"
+                                >
+                                    <path
+                                        stroke="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M9 5h6M9 8h6m-6 3h6M4.996 5h.01m-.01 3h.01m-.01 3h.01M2 1h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Z"
+                                    />
                                 </svg>
-                                <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Category</span>
-                                <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
+                                <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
+                                    Category
+                                </span>
+                                <svg
+                                    className="w-3 h-3"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 10 6"
+                                >
+                                    <path
+                                        stroke="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="m1 1 4 4 4-4"
+                                    />
                                 </svg>
                             </button>
 
-                            <ul id="dropdown-example-category" className="hidden py-2 space-y-2">
+                            <ul
+                                id="dropdown-example-category"
+                                className="hidden py-2 space-y-2"
+                            >
                                 <div className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                                     <input
                                         type="radio"
                                         id="category-radio-all-category"
                                         name="category"
-                                        value="1"
+                                        value=""
+                                        onChange={() => searchByCategory("")}
+                                        checked={category === ""}
                                         className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                     />
-                                    <label htmlFor="category-radio-all-category" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">All Category</label>
+                                    <label
+                                        htmlFor="category-radio-all-category"
+                                        className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                    >
+                                        All Category
+                                    </label>
                                 </div>
 
                                 <div className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
@@ -98,9 +146,16 @@ export default function HomePublic() {
                                         id="category-radio-koleksi-atasan"
                                         name="category"
                                         value="1"
+                                        onChange={() => searchByCategory(1)}
+                                        checked={category === 1}
                                         className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                     />
-                                    <label htmlFor="category-radio-koleksi-atasan" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Koleksi Atasan</label>
+                                    <label
+                                        htmlFor="category-radio-koleksi-atasan"
+                                        className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                    >
+                                        Koleksi Atasan
+                                    </label>
                                 </div>
 
                                 <div className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
@@ -109,9 +164,16 @@ export default function HomePublic() {
                                         id="category-radio-koleksi-bawahan"
                                         name="category"
                                         value="2"
+                                        onChange={() => searchByCategory(2)}
+                                        checked={category === 2}
                                         className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                     />
-                                    <label htmlFor="category-radio-koleksi-bawahan" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Koleksi Bawahan</label>
+                                    <label
+                                        htmlFor="category-radio-koleksi-bawahan"
+                                        className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                    >
+                                        Koleksi Bawahan
+                                    </label>
                                 </div>
                             </ul>
                         </li>
