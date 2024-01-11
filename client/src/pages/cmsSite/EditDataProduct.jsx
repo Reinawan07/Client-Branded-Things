@@ -4,21 +4,21 @@ import { Link, useParams } from "react-router-dom";
 import Swal from 'sweetalert2';
 
 export default function EditDataProduct() {
+    const { id } = useParams();
 
     const [formData, setFormData] = useState({
         name: "",
         description: "",
         price: "",
+        stock: "",
         imgUrl: "",
         categoryId: "1",
     });
 
-    const { id } = useParams();
-
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://brandedthings.reinawan.fun/product/${id}`);
+                const response = await axios.get(`https://brandedthings.reinawan.fun/products/${id}`);
                 setFormData(response.data);
             } catch (error) {
                 console.error(error);
@@ -31,7 +31,7 @@ export default function EditDataProduct() {
     const handleInputChange = (e) => {
         setFormData({
             ...formData,
-            [e.target.name]: e.target.defaultValue,
+            [e.target.name]: e.target.value,
         });
     };
 
@@ -43,13 +43,12 @@ export default function EditDataProduct() {
                 headers: { Authorization: 'Bearer ' + localStorage.access_token },
             });
 
-            window.location.href = '/listcuisine';
         } catch (error) {
             console.error(error);
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Failed to update cuisine!',
+                text: error.response.data.message,
             });
         }
     };
@@ -73,7 +72,8 @@ export default function EditDataProduct() {
                     </Link>
                 </div>
 
-                <form className="p-4 md:p-5" onSubmit={handleSubmit}>
+                <form className="p-4 md:p-5"
+                    onSubmit={handleSubmit}>
                     <div className="grid gap-4 mb-4 grid-cols-2">
                         <div className="col-span-2">
                             <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>

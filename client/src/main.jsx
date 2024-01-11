@@ -8,6 +8,7 @@ import ListEntitasUtama from './pages/cmsSite/ListEntitasUtama';
 import { NavbarCmsSite, NavbarPubSite } from './App';
 import EditDataProduct from './pages/cmsSite/EditDataProduct';
 import AddStaff from './pages/cmsSite/AddStaff';
+import UploadImage from './pages/cmsSite/UploadImg';
 
 
 const router = createBrowserRouter([
@@ -28,10 +29,7 @@ const router = createBrowserRouter([
     path: "/login",
     element: <LoginPage />,
   },
-  {
-    path: "/add-staff",
-    element: <AddStaff />
-  },
+  
   {
     element: <NavbarCmsSite />,
     children: [
@@ -44,7 +42,15 @@ const router = createBrowserRouter([
         element: <EditDataProduct />
       },
     ]
-  }
+  },
+  {
+    path: "/add-staff",
+    element: <AddStaff />
+  },
+  {
+    path: "/upload/:id",
+    element: <UploadImage />
+  },
 
 ]);
 
