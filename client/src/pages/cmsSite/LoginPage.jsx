@@ -33,6 +33,11 @@ export default function LoginPage() {
 
         localStorage.access_token = data.access_token;
 
+        Swal.fire({
+            title: "Login Success",
+            icon: "success"
+        });
+
         navigate("/listproducts");
 
         console.log(data);

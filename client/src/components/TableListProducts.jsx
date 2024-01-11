@@ -6,14 +6,29 @@ export default function TableListProducts({ products, onDelete }) {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`https://brandedthings.reinawan.fun/product/${products.id}`,
-                { headers: { Authorization: 'Bearer ' + localStorage.access_token } });
-
-            onDelete(products.id);
-            Swal.fire({
-                title: "Success Delete Product",
-                icon: "success"
+            const result = await Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
             });
+
+            if (result.isConfirmed) {
+                await axios.delete(`https://brandedthings.reinawan.fun/product/${products.id}`,
+                    { headers: { Authorization: 'Bearer ' + localStorage.access_token } });
+
+                onDelete(products.id);
+
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+            }
+
 
         } catch (error) {
             console.error("errordelete", error);
