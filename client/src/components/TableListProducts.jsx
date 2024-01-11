@@ -56,7 +56,7 @@ export default function TableListProducts({ products, onDelete }) {
                     </td>
 
                     <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                        {products.CategoryId}
+                        {products.Category.name}
                     </td>
 
                     <td className="px-6 py-4 text-center">
