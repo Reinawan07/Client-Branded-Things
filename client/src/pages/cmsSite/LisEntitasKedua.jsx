@@ -1,22 +1,21 @@
-import { Link } from "react-router-dom";
-import axios from "axios";
 import { useEffect, useState } from "react";
-import TableListProducts from "../../components/TableListProducts";
 import List from "../../components/List-Add-Create";
+import TableListCategory from "../../components/TableListCategory";
+import axios from "axios";
 
-export default function ListEntitasUtama() {
+export default function ListEntitasKedua() {
 
-    const [dataProducts, setDataProducts] = useState([]);
+    const [dataCategories, setDataCategories] = useState([]);
 
     // fetchData
     const fetchData = async () => {
         try {
             const { data } = await axios({
                 method: "get",
-                url: "https://brandedthings.reinawan.fun/products",
+                url: "https://brandedthings.reinawan.fun/categories",
                 headers: { Authorization: 'Bearer ' + localStorage.access_token },
             });
-            setDataProducts(data);
+            setDataCategories(data);
         } catch (error) {
             console.log(error);
         }
@@ -26,9 +25,6 @@ export default function ListEntitasUtama() {
         fetchData();
     }, []);
 
-    const handleDelete = (id) => {
-        setDataProducts((prevData) => prevData.filter((products) => products.id !== id));
-    };
 
     return (
         <>
@@ -40,31 +36,17 @@ export default function ListEntitasUtama() {
                         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
-                                    <th scope="col" className="px-16 py-3">
-                                        <span className="sr-only">ImgUrl</span>
+                                    <th scope="col" className="px-6 py-3">
+                                        Id
                                     </th>
                                     <th scope="col" className="px-6 py-3">
                                         Name
                                     </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Description
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Price
-                                    </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Category
-                                    </th>
-                                    <th scope="col" className="px-6 py-3 text-center">
-                                        Action
-                                    </th>
                                 </tr>
                             </thead>
-
-                            {dataProducts.map((products) => (
-                                <TableListProducts key={products.id} products={products} onDelete={handleDelete} />
+                            {dataCategories.map((categories) => (
+                                <TableListCategory key={categories.id} categories={categories} />
                             ))}
-
                         </table>
                     </div>
 

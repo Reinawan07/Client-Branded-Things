@@ -9,6 +9,7 @@ import { NavbarCmsSite, NavbarPubSite } from './App';
 import EditDataProduct from './pages/cmsSite/EditDataProduct';
 import AddStaff from './pages/cmsSite/AddStaff';
 import UploadImage from './pages/cmsSite/UploadImg';
+import ListEntitasKedua from './pages/cmsSite/LisEntitasKedua';
 
 
 const router = createBrowserRouter([
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/listproducts",
         element: <ListEntitasUtama />
+      },
+      {
+        path: "/listcategory",
+        element: <ListEntitasKedua />
       },
       {
         path: "/edit/:id",
