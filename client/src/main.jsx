@@ -29,7 +29,7 @@ const router = createBrowserRouter([
     path: "/login",
     element: <LoginPage />,
   },
-  
+
   {
     element: <NavbarCmsSite />,
     children: [
@@ -41,15 +41,15 @@ const router = createBrowserRouter([
         path: "/edit/:id",
         element: <EditDataProduct />
       },
+      {
+        path: "/add-staff",
+        element: <AddStaff />
+      },
+      {
+        path: "/upload/:id",
+        element: <UploadImage />
+      },
     ]
-  },
-  {
-    path: "/add-staff",
-    element: <AddStaff />
-  },
-  {
-    path: "/upload/:id",
-    element: <UploadImage />
   },
 
 ]);

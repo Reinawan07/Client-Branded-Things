@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 export default function UploadImageEntitasUtama() {
     const [file, setFile] = useState(null);
     const { id } = useParams();
-    const navigate = useNavigate;
+    const navigate = useNavigate();
     console.log(id);
 
     const handleChange = (event) => {
@@ -77,7 +77,7 @@ export default function UploadImageEntitasUtama() {
                                 type="file"
                                 name="imgUrl"
                                 id="imgUrl"
-                                accept="image/*"
+                                // accept="image"
                                 onChange={handleChange}
                                 className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-blue-50 dark:text-gray-400 focus:outline-none dark:bg-blue-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="user_avatar_help"></input>
                             <div className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="user_avatar_help">Insert Your Image</div>
