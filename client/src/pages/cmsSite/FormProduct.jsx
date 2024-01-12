@@ -18,8 +18,8 @@ export default function FormProduct() {
     });
     console.log(formData);
 
-    if (id) {
-        useEffect(() => {
+    useEffect(() => {
+        if (id) {
             const fetchDataProducts = async () => {
                 try {
                     const { data } = await axios({
@@ -40,10 +40,9 @@ export default function FormProduct() {
                     });
                 }
             };
-
             fetchDataProducts();
-        }, [id]);
-    }
+        }
+    }, [id]);
 
     const fetchDataCategories = async () => {
         try {
@@ -156,7 +155,7 @@ export default function FormProduct() {
                                 value={formData.categoryId}
                                 onChange={handleInputChange}
                                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <option selected="" disabled>Select category</option>
+                                <option disabled>Select category</option>
                                 {dataCategories &&
                                     dataCategories.map((el) => {
                                         return (
@@ -207,6 +206,7 @@ export default function FormProduct() {
                         <path d="M12.687 14.408a3.01 3.01 0 0 1-1.533.821l-3.566.713a3 3 0 0 1-3.53-3.53l.713-3.566a3.01 3.01 0 0 1 .821-1.533L10.905 2H2.167A2.169 2.169 0 0 0 0 4.167v11.666A2.169 2.169 0 0 0 2.167 18h11.666A2.169 2.169 0 0 0 16 15.833V11.1l-3.313 3.308Zm5.53-9.065.546-.546a2.518 2.518 0 0 0 0-3.56 2.576 2.576 0 0 0-3.559 0l-.547.547 3.56 3.56Z" />
                         <path d="M13.243 3.2 7.359 9.081a.5.5 0 0 0-.136.256L6.51 12.9a.5.5 0 0 0 .59.59l3.566-.713a.5.5 0 0 0 .255-.136L16.8 6.757 13.243 3.2Z" />
                     </svg>} name={"Save Product"} />
+                    
                 </form>
             </div>
         </div>
