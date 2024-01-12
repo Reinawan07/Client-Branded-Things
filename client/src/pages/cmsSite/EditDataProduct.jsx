@@ -1,33 +1,59 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from 'sweetalert2';
 import Button from "../../components/Button";
 
 export default function EditDataProduct() {
     const { id } = useParams();
-
+    const [dataCategories, setDataCategories] = useState([]);
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: "",
         description: "",
         price: "",
         stock: "",
         imgUrl: "",
-        categoryId: "1",
+        categoryId: "",
     });
+    console.log(formData);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchDataProducts = async () => {
             try {
-                const response = await axios.get(`https://brandedthings.reinawan.fun/products/${id}`);
-                setFormData(response.data);
+                const { data } = await axios({
+                    method: "get",
+                    url: `https://brandedthings.reinawan.fun/products/${id}`,
+                    headers: {
+                        Authorization: "Bearer " + localStorage.access_token,
+                    },
+                });
+
+                setFormData(data);
             } catch (error) {
-                console.error(error);
+                console.log(error);
             }
         };
 
-        fetchData();
+        fetchDataProducts();
     }, [id]);
+
+    const fetchDataCategories = async () => {
+        try {
+            const { data } = await axios({
+                method: "get",
+                url: "https://brandedthings.reinawan.fun/categories",
+                headers: { Authorization: 'Bearer ' + localStorage.access_token },
+            });
+            setDataCategories(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchDataCategories();
+    }, []);
 
     const handleInputChange = (e) => {
         setFormData({
@@ -43,6 +69,11 @@ export default function EditDataProduct() {
             await axios.put(`https://brandedthings.reinawan.fun/product/${id}`, formData, {
                 headers: { Authorization: 'Bearer ' + localStorage.access_token },
             });
+            Swal.fire({
+                title: "Update Success",
+                icon: "success"
+            });
+            navigate("/listproducts")
 
         } catch (error) {
             console.error(error);
@@ -102,13 +133,19 @@ export default function EditDataProduct() {
                             <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
                             <select
                                 id="category"
-                                name="CategoryId"
+                                name="categoryId"
                                 value={formData.categoryId}
                                 onChange={handleInputChange}
                                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option selected="" disabled>Select category</option>
-                                <option defaultValue="1">Koleksi Atasan</option>
-                                <option defaultValue="2">Koleksi Bawahan</option>
+                                {dataCategories &&
+                                    dataCategories.map((el) => {
+                                        return (
+                                            <option key={el.id} value={el.id}>
+                                                {el.name}
+                                            </option>
+                                        );
+                                    })}
                             </select>
                         </div>
 
@@ -148,9 +185,9 @@ export default function EditDataProduct() {
                     </div>
 
                     <Button svg={<svg className="w-6 h-6 text-white mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                            <path d="M12.687 14.408a3.01 3.01 0 0 1-1.533.821l-3.566.713a3 3 0 0 1-3.53-3.53l.713-3.566a3.01 3.01 0 0 1 .821-1.533L10.905 2H2.167A2.169 2.169 0 0 0 0 4.167v11.666A2.169 2.169 0 0 0 2.167 18h11.666A2.169 2.169 0 0 0 16 15.833V11.1l-3.313 3.308Zm5.53-9.065.546-.546a2.518 2.518 0 0 0 0-3.56 2.576 2.576 0 0 0-3.559 0l-.547.547 3.56 3.56Z" />
-                            <path d="M13.243 3.2 7.359 9.081a.5.5 0 0 0-.136.256L6.51 12.9a.5.5 0 0 0 .59.59l3.566-.713a.5.5 0 0 0 .255-.136L16.8 6.757 13.243 3.2Z" />
-                        </svg>} name={"Save Product"} />
+                        <path d="M12.687 14.408a3.01 3.01 0 0 1-1.533.821l-3.566.713a3 3 0 0 1-3.53-3.53l.713-3.566a3.01 3.01 0 0 1 .821-1.533L10.905 2H2.167A2.169 2.169 0 0 0 0 4.167v11.666A2.169 2.169 0 0 0 2.167 18h11.666A2.169 2.169 0 0 0 16 15.833V11.1l-3.313 3.308Zm5.53-9.065.546-.546a2.518 2.518 0 0 0 0-3.56 2.576 2.576 0 0 0-3.559 0l-.547.547 3.56 3.56Z" />
+                        <path d="M13.243 3.2 7.359 9.081a.5.5 0 0 0-.136.256L6.51 12.9a.5.5 0 0 0 .59.59l3.566-.713a.5.5 0 0 0 .255-.136L16.8 6.757 13.243 3.2Z" />
+                    </svg>} name={"Save Product"} />
                 </form>
             </div>
         </div>
