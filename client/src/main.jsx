@@ -6,10 +6,10 @@ import HomeDetailPublic from './pages/publicSite/HomeDetailPublic';
 import LoginPage from './pages/cmsSite/LoginPage';
 import ListEntitasUtama from './pages/cmsSite/ListEntitasUtama';
 import { NavbarCmsSite, NavbarPubSite } from './App';
-import EditDataProduct from './pages/cmsSite/EditDataProduct';
 import AddStaff from './pages/cmsSite/AddStaff';
 import UploadImage from './pages/cmsSite/UploadImg';
 import ListEntitasKedua from './pages/cmsSite/LisEntitasKedua';
+import FormProduct from './pages/cmsSite/FormProduct';
 
 
 const router = createBrowserRouter([
@@ -43,8 +43,12 @@ const router = createBrowserRouter([
         element: <ListEntitasKedua />
       },
       {
+        path: "/create",
+        element: <FormProduct />
+      },
+      {
         path: "/edit/:id",
-        element: <EditDataProduct />
+        element: <FormProduct />
       },
       {
         path: "/add-staff",

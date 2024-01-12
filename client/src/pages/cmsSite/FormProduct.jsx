@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from 'sweetalert2';
 import Button from "../../components/Button";
 
-export default function EditDataProduct() {
+export default function FormProduct() {
     const { id } = useParams();
     const [dataCategories, setDataCategories] = useState([]);
     const navigate = useNavigate();
@@ -14,29 +14,36 @@ export default function EditDataProduct() {
         price: "",
         stock: "",
         imgUrl: "",
-        categoryId: "",
+        categoryId: "1",
     });
     console.log(formData);
 
-    useEffect(() => {
-        const fetchDataProducts = async () => {
-            try {
-                const { data } = await axios({
-                    method: "get",
-                    url: `https://brandedthings.reinawan.fun/products/${id}`,
-                    headers: {
-                        Authorization: "Bearer " + localStorage.access_token,
-                    },
-                });
+    if (id) {
+        useEffect(() => {
+            const fetchDataProducts = async () => {
+                try {
+                    const { data } = await axios({
+                        method: "get",
+                        url: `https://brandedthings.reinawan.fun/products/${id}`,
+                        headers: {
+                            Authorization: "Bearer " + localStorage.access_token,
+                        },
+                    });
 
-                setFormData(data);
-            } catch (error) {
-                console.log(error);
-            }
-        };
+                    setFormData(data);
+                } catch (error) {
+                    console.log(error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops",
+                        text: error.response.data.message,
+                    });
+                }
+            };
 
-        fetchDataProducts();
-    }, [id]);
+            fetchDataProducts();
+        }, [id]);
+    }
 
     const fetchDataCategories = async () => {
         try {
@@ -66,14 +73,26 @@ export default function EditDataProduct() {
         e.preventDefault();
 
         try {
-            await axios.put(`https://brandedthings.reinawan.fun/product/${id}`, formData, {
-                headers: { Authorization: 'Bearer ' + localStorage.access_token },
-            });
-            Swal.fire({
-                title: "Update Success",
-                icon: "success"
-            });
-            navigate("/listproducts")
+            if (id) {
+
+                await axios.put(`https://brandedthings.reinawan.fun/product/${id}`, formData, {
+                    headers: { Authorization: 'Bearer ' + localStorage.access_token },
+                });
+                Swal.fire({
+                    title: "Update Product Success",
+                    icon: "success"
+                });
+                navigate("/listproducts")
+            } else {
+                await axios.post(`https://brandedthings.reinawan.fun/products`, formData, {
+                    headers: { Authorization: 'Bearer ' + localStorage.access_token },
+                });
+                Swal.fire({
+                    title: "Create Product Success",
+                    icon: "success"
+                });
+                navigate("/listproducts")
+            }
 
         } catch (error) {
             console.error(error);
@@ -91,7 +110,7 @@ export default function EditDataProduct() {
 
                 <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                        <b>Edit Data Product</b>
+                        <b>Input Data Product</b>
                     </h3>
                     <Link to={'/listproducts'}
                         type="button"
@@ -115,7 +134,7 @@ export default function EditDataProduct() {
                                 id="name"
                                 defaultValue={formData.name}
                                 onChange={handleInputChange}
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Input Name Cuisine" required=""></input>
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Input Name Product" required=""></input>
                         </div>
 
                         <div className="col-span-2 sm:col-span-1">
